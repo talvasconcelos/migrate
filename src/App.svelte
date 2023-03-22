@@ -55,6 +55,14 @@
 
     loading = true;
     let pubkey = await window.nostr.getPublicKey();
+    let blankEv = {
+      kind: 30023,
+      pubkey,
+      content: "",
+      created_at: Math.floor(Date.now() / 1000),
+      tags: []
+    };
+    await window.nostr.signEvent(blankEv); // Hack to prevent asking permission for every post
 
     uploadToNostr.forEach(async (p) => {
       let { id, title, summary, image, markdown } = p;
