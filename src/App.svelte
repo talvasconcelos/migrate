@@ -23,7 +23,6 @@
   onMount(async () => {
     await timeout(500);
     hasNIP07 = Boolean(window.nostr);
-    console.log(hasNIP07);
     if (!hasNIP07) return;
   });
 
@@ -92,6 +91,7 @@
       await poolPublish(signed);
       await timeout(500);
     });
+    await timeout(1000);
     return reset();
   }
 
@@ -162,8 +162,11 @@
     </h3>
   </hgroup>
   <p>
-    For now it only works for Substack. You need to create an export of your
-    Substack posts, extract the <code>.zip</code> file, and upload the
+    <strong
+      >This a WIP tool, and still under development, use at your own risk!</strong
+    >
+    For now it only works for Substack. You need to create an export of your Substack
+    posts, extract the <code>.zip</code> file, and upload the
     <code>export/posts.csv</code>
     file and the <code>.html</code> files in <code>export/posts/</code> folder.
   </p>
