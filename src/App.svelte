@@ -293,6 +293,18 @@
     </details>
   </section>
 {/if}
+<footer>
+  <hr />
+  <div class="container-fluid">
+    <p>
+      <a
+        href="https://github.com/talvasconcelos/migrate"
+        target="_blank"
+        rel="noopener noreferrer">Source code</a
+      >.
+    </p>
+  </div>
+</footer>
 
 <style>
   .header {
