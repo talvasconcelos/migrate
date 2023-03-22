@@ -4,7 +4,7 @@ Migrate articles or blog posts to Nostr. A NIP07 browser extension is needed to 
 
 **For now it works only for Substack**
 
-Visit the website at [migrate-nostr.netlify.app](https://migrate-nostr.netlify.app/)
+Visit the website at [migrate.nostr.com](https://migrate.nostr.com)
 
 ## Substack
 
