@@ -37,7 +37,7 @@ const largestSrc = $imageElem => {
   } else {
     srcToUse = src
   }
-
+  console.log(src, srcToUse)
   return srcToUse
 }
 
@@ -76,9 +76,11 @@ function processSubstackData(data) {
       firstElement.tagName === 'img' || $(firstElement).get(0).name === 'img'
         ? firstElement
         : $(firstElement).find('img')
+
     let firstImgSrc = $(theElementItself).attr('src')
 
     if (firstImgSrc.length > 0) {
+      // TO DO, sometimes images get a faulty src
       output.image = firstImgSrc
       $(firstElement).remove()
     }
