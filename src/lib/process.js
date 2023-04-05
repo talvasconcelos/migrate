@@ -1,5 +1,5 @@
 import * as cheerio from 'cheerio'
-import {parseSrcset} from 'srcset'
+import { parseSrcset } from 'srcset'
 import TurndownService from 'turndown'
 
 const turndownService = new TurndownService()
@@ -43,13 +43,14 @@ const largestSrc = $imageElem => {
 
 function processSubstackData(data) {
   let output = {}
-  let {html} = data
+  let {html} = data  
 
   // If there's no HTML, exit & return an empty string to avoid errors
   if (!html) {
     console.debug(`Post has no HTML content`)
     return ''
   }
+  
 
   // As there is HTML, pass it to Cheerio inside a `<body>` tag so we have a global wrapper to target later on
   const $ = cheerio.load(`<body>${html}</body>`, {
@@ -66,7 +67,7 @@ function processSubstackData(data) {
   })
 
   let firstElement = $('body *').first()
-
+  
   if (
     firstElement.tagName === 'img' ||
     ($(firstElement).get(0) && $(firstElement).get(0).name === 'img') ||
@@ -77,13 +78,9 @@ function processSubstackData(data) {
         ? firstElement
         : $(firstElement).find('img')
 
-    let firstImgSrc = $(theElementItself).attr('src')
-
-    if (firstImgSrc.length > 0) {
-      // TO DO, sometimes images get a faulty src
-      output.image = firstImgSrc
+        let firstImgSrc = largestSrc($(theElementItself))
+        output.image = firstImgSrc
       $(firstElement).remove()
-    }
   }
 
   $('div.tweet').each((i, el) => {
@@ -161,4 +158,5 @@ function processSubstackData(data) {
   return {...data, ...output}
 }
 
-export {processSubstackData}
+export { processSubstackData }
+
